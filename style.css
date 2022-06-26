@@ -1,17 +1,5 @@
-img#flag {
-    width: 500px;
-    height: 300px;
-}
-
 p {
     color: white;
-}
-
-ul li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
 }
 
 ul {
@@ -20,4 +8,26 @@ ul {
     background-color: gray;
     width: 150px;
     color: white;
+}
+
+ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+img#flag {
+    width: 500px;
+    height: 300px;
+}
+
+button#submit {
+    font-size: 2rem;
+    border-radius: 1rem;
+}
+
+#countries {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
