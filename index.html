@@ -23,15 +23,19 @@
             <h2>Guess the Flag!</h2>
             <img id="flag" class="m-4" src="" />
             <br/>
-            <select name="countries" id="countries">
-            <!-- These are set in `countries.js` using populateCountries(); -->
-            </select>
+            <input type="text" list="countriesData" id="countries" name="countries">
+            <datalist id="countriesData"></datalist>
+            <!-- These are set in `countries.js` using populateOptions(); -->
+            </input>
             <br/>
             <button id="submit">Guess!</button>
             <br/>
             <fieldset id="regionFS">
                 <legend>Pick your Regions:</legend>
             </fieldset>
+            <br/>
+            <h3 id="score-correct">0</h3>
+            <h3 id="score-wrong">0</h3>
         </main>
     </div>
 
@@ -50,7 +54,7 @@
             createUserRegions();
             updateUserFlags();
             createFlagRegionOptionCheckboxes();
-            populateCountries();
+            populateOptions();
             resetFlag();
             
             $("#submit").click(function () {

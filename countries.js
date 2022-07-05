@@ -59,7 +59,7 @@ const countries = [
     {'abbr': 'cc', 'name': "Cocos (Keeling) Islands", 'region': 'Miscellaneous'},
     {'abbr': 'co', 'name': "Colombia", 'region': 'Americas'},
     {'abbr': 'km', 'name': "Comoros", 'region': 'Africa'},
-    {'abbr': 'cd', 'name': "Democratic Republic of the Congo", 'region': 'Africa'},
+    {'abbr': 'cd', 'name': "Congo, Democratic Republic of", 'region': 'Africa'},
     {'abbr': 'cg', 'name': "Congo", 'region': 'Africa'},
     {'abbr': 'ck', 'name': "Cook Islands", 'region': 'Oceania'},
     {'abbr': 'cr', 'name': "Costa Rica", 'region': 'Americas'},
@@ -107,7 +107,7 @@ const countries = [
     {'abbr': 'gy', 'name': "Guyana", 'region': 'Americas'},
     {'abbr': 'ht', 'name': "Haiti", 'region': 'Americas'},
     {'abbr': 'hm', 'name': "Heard Island and McDonald Islands", 'region': 'Miscellaneous'},
-    {'abbr': 'va', 'name': "The Vatican", 'region': 'Europe'},
+    {'abbr': 'va', 'name': "Vatican City", 'region': 'Europe'},
     {'abbr': 'hn', 'name': "Honduras", 'region': 'Americas'},
     {'abbr': 'hk', 'name': "Hong Kong", 'region': 'Asia'},
     {'abbr': 'hu', 'name': "Hungary", 'region': 'Europe'},
@@ -183,7 +183,7 @@ const countries = [
     {'abbr': 'pg', 'name': "Papua New Guinea", 'region': 'Oceania'},
     {'abbr': 'py', 'name': "Paraguay", 'region': 'Americas'},
     {'abbr': 'pe', 'name': "Peru", 'region': 'Americas'},
-    {'abbr': 'ph', 'name': "The Philippines", 'region': 'Oceania'},
+    {'abbr': 'ph', 'name': "Philippines", 'region': 'Oceania'},
     {'abbr': 'pn', 'name': "Pitcairn Islands", 'region': 'Oceania'},
     {'abbr': 'pl', 'name': "Poland", 'region': 'Europe'},
     {'abbr': 'pt', 'name': "Portugal", 'region': 'Europe'},
@@ -220,7 +220,7 @@ const countries = [
     {'abbr': 'ss', 'name': "South Sudan", 'region': 'Africa'},
     {'abbr': 'es', 'name': "Spain", 'region': 'Europe'},
     {'abbr': 'lk', 'name': "Sri Lanka", 'region': 'Asia'},
-    {'abbr': 'sd', 'name': "The Sudan", 'region': 'Africa'},
+    {'abbr': 'sd', 'name': "Sudan", 'region': 'Africa'},
     {'abbr': 'sr', 'name': "Suriname", 'region': 'Americas'},
     {'abbr': 'sj', 'name': "Svalbard and Jan Mayen", 'region': 'Miscellaneous'},
     {'abbr': 'se', 'name': "Sweden", 'region': 'Europe'},
@@ -269,12 +269,24 @@ function removeAllChildNodes(parent) {
     }
 }
 
-function populateCountries() {
+function sortedCountriesByName() {
+    // Sorts countries by name.
+    return countries.sort(function(a, b) {
+    var keyA = a.name,
+        keyB = b.name;
+
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
+    });
+}
+
+function populateOptions() {
     /* Populates countries in the Options selection. */
-    var selectionBox = document.getElementById("countries");
+    var selectionBox = document.getElementById("countriesData");
     removeAllChildNodes(selectionBox);
 
-    countries.forEach(e => {
+    sortedCountriesByName().forEach(e => {
         if (document.userRegions.has(e.region)) {
             var opt = document.createElement("option");
             var text = document.createTextNode(e["name"]);
@@ -290,7 +302,7 @@ function refreshCountriesAndFlags() {
     // Mostly used to set the list back to the top...
     // Maybe this will be useful some other time, but, otherwise,
     // it is not necessary.
-    populateCountries();  // Repopulates country dropdown.
+    populateOptions();  // Repopulates country dropdown.
     updateUserFlags();    // Updates the possible flags.
 
 }
@@ -354,13 +366,17 @@ function getRandomFlag() {
 function submitGuess() {
     /* Gets the user's guess in the selection and compares it to the 
        chosen random flag. */
-    let e = document.getElementById("countries");
-    let selectedCountryAbbr = e.options[e.selectedIndex].value;
 
+    let selectedCountryAbbr = document.getElementById('countries').value;
+
+    var scoreCorrect = document.getElementById("score-correct");
+    var scoreWrong = document.getElementById("score-wrong");
     if (window.flagData['abbr'] == selectedCountryAbbr) {
         alert(`Yep! It was ${window.flagData['name']}.`);
+        scoreCorrect.textContent = (parseInt(scoreCorrect.textContent) + 1).toString();
     } else {
         alert(`Nope! It was ${window.flagData['name']}.`)
+        scoreWrong.textContent = (parseInt(scoreWrong.textContent) + 1).toString()
     }
 }
 
