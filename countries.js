@@ -367,13 +367,15 @@ function submitGuess() {
     /* Gets the user's guess in the selection and compares it to the 
        chosen random flag. */
 
-    let selectedCountryName = document.getElementById('countries').value;
+    let selectedCountryAbbr = document.getElementById('countries').value;
 
     var scoreCorrect = document.getElementById("score-correct");
     var scoreWrong = document.getElementById("score-wrong");
-    if (window.flagData['name'].toLowerCase() == selectedCountryName.toLowerCase()) {
+    if (window.flagData['abbr'] == selectedCountryAbbr) {
         alert(`Yep! It was ${window.flagData['name']}.`);
         scoreCorrect.textContent = (parseInt(scoreCorrect.textContent) + 1).toString();
+    } else if(selectedCountryAbbr == ""){
+        alert(`Please at least choose 1 country.`)
     } else {
         alert(`Nope! It was ${window.flagData['name']}.`)
         scoreWrong.textContent = (parseInt(scoreWrong.textContent) + 1).toString()
