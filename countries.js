@@ -285,6 +285,16 @@ function populateCountries() {
     });
 }
 
+function refreshCountriesAndFlags() {
+    // Refreshes the options list + flag list.
+    // Mostly used to set the list back to the top...
+    // Maybe this will be useful some other time, but, otherwise,
+    // it is not necessary.
+    populateCountries();  // Repopulates country dropdown.
+    updateUserFlags();    // Updates the possible flags.
+
+}
+
 function createFlagRegionOptionCheckboxes() {
     /* Creates checkboxes. */
 
@@ -307,9 +317,7 @@ function createFlagRegionOptionCheckboxes() {
         inputBox.onclick = function(elt) { 
             if (elt.target.checked) { document.userRegions.add(elt.target.id); } 
             else { document.userRegions.delete(elt.target.id); }
-            console.log(document.userRegions);
-            populateCountries();  // Repopulates country dropdown.
-            updateUserFlags();    // Updates the possible flags.
+            refreshCountriesAndFlags();
             resetFlag();
         }
 
