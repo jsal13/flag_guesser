@@ -290,7 +290,7 @@ function populateOptions() {
         if (document.userRegions.has(e.region)) {
             var opt = document.createElement("option");
             var text = document.createTextNode(e["name"]);
-            opt.value = e["abbr"]
+            opt.value = e["name"]
             opt.appendChild(text);
             selectionBox.appendChild(opt);
         }
@@ -367,11 +367,11 @@ function submitGuess() {
     /* Gets the user's guess in the selection and compares it to the 
        chosen random flag. */
 
-    let selectedCountryAbbr = document.getElementById('countries').value;
+    let selectedCountryName = document.getElementById('countries').value;
 
     var scoreCorrect = document.getElementById("score-correct");
     var scoreWrong = document.getElementById("score-wrong");
-    if (window.flagData['abbr'] == selectedCountryAbbr) {
+    if (window.flagData['name'].toLowerCase() == selectedCountryName.toLowerCase()) {
         alert(`Yep! It was ${window.flagData['name']}.`);
         scoreCorrect.textContent = (parseInt(scoreCorrect.textContent) + 1).toString();
     } else {
