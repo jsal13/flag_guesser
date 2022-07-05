@@ -88,7 +88,7 @@ const countries = [
     {'abbr': 'fr', 'name': "France", 'region': 'Europe'},
     {'abbr': 'gf', 'name': "French Guiana", 'region': 'Americas'},
     {'abbr': 'pf', 'name': "French Polynesia", 'region': 'Oceania'},
-    {'abbr': 'tf', 'name': "French Southern Territories", 'region': ''},
+    {'abbr': 'tf', 'name': "French Southern Territories", 'region': 'Miscellaneous'},
     {'abbr': 'ga', 'name': "Gabon", 'region': 'Africa'},
     {'abbr': 'gm', 'name': "The Gambia", 'region': 'Africa'},
     {'abbr': 'ge', 'name': "Georgia", 'region': 'Middle East'},
@@ -147,7 +147,7 @@ const countries = [
     {'abbr': 'mv', 'name': "Maldives", 'region': 'Africa'},
     {'abbr': 'ml', 'name': "Mali", 'region': 'Africa'},
     {'abbr': 'mt', 'name': "Malta", 'region': 'Europe'},
-    {'abbr': 'mh', 'name': "Marshall Islands", 'region': ''},
+    {'abbr': 'mh', 'name': "Marshall Islands", 'region': 'Oceania'},
     {'abbr': 'mq', 'name': "Martinique", 'region': 'Americas'},
     {'abbr': 'mr', 'name': "Mauritania", 'region': 'Oceania'},
     {'abbr': 'mu', 'name': "Mauritius", 'region': 'Africa'},
@@ -263,21 +263,84 @@ const countries = [
 
 /* Helper Functions */
 
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 function populateCountries() {
     /* Populates countries in the Options selection. */
     var selectionBox = document.getElementById("countries");
+    removeAllChildNodes(selectionBox);
+
     countries.forEach(e => {
-        var opt = document.createElement("option");
-        var text = document.createTextNode(e["name"]);
-        opt.value = e["abbr"]
-        opt.appendChild(text);
-        selectionBox.appendChild(opt);
+        if (document.userRegions.has(e.region)) {
+            var opt = document.createElement("option");
+            var text = document.createTextNode(e["name"]);
+            opt.value = e["abbr"]
+            opt.appendChild(text);
+            selectionBox.appendChild(opt);
+        }
     });
 }
 
-function getRandomFlag(array = countries) {
+function createFlagRegionOptionCheckboxes() {
+    /* Creates checkboxes. */
+
+    // Creates a set of all regions.
+    document.allRegions = new Set();
+    countries.forEach(e => {
+        document.allRegions.add(e.region);
+    });
+
+    // Creates div + inputbox + label.
+    var fieldset = document.getElementById("regionFS");
+    document.allRegions.forEach(e => {
+        var div = document.createElement("div");
+
+        var inputBox = document.createElement("input");
+        inputBox.setAttribute("type", "checkbox")
+        inputBox.setAttribute("id", `${e}`);
+        inputBox.setAttribute("name", `${e}`);
+        inputBox.setAttribute("checked", true);
+        inputBox.onclick = function(elt) { 
+            if (elt.target.checked) { document.userRegions.add(elt.target.id); } 
+            else { document.userRegions.delete(elt.target.id); }
+            console.log(document.userRegions);
+            populateCountries();  // Repopulates country dropdown.
+            updateUserFlags();    // Updates the possible flags.
+            resetFlag();
+        }
+
+        var label = document.createElement("label");
+        label.setAttribute("for", `${e}`);
+        label.textContent = `${e}`;
+        div.appendChild(inputBox);
+        div.appendChild(label);
+        fieldset.append(div);
+    })
+}
+
+function createUserRegions() {
+    /* Creates a set for user's regions. */
+    document.userRegions = new Set();
+    countries.forEach(e => {
+        document.userRegions.add(e.region);
+    });
+}
+
+function updateUserFlags() {
+    /* Update a set for user's flags. */
+    document.userFlags = new Array();
+    countries.forEach(e => {
+        if (document.userRegions.has(e.region)) { document.userFlags.push(e); }
+    });
+}
+
+function getRandomFlag() {
     /* Gets a random flag, given parameters. */
-    return array[Math.floor(Math.random() * array.length)];
+    return document.userFlags[Math.floor(Math.random() * document.userFlags.length)];
 }
 
 function submitGuess() {

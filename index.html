@@ -28,6 +28,10 @@
             </select>
             <br/>
             <button id="submit">Guess!</button>
+            <br/>
+            <fieldset id="regionFS">
+                <legend>Pick your Regions:</legend>
+            </fieldset>
         </main>
     </div>
 
@@ -43,6 +47,9 @@
     <script>
         // Init
         $(document).ready(function () {
+            createUserRegions();
+            updateUserFlags();
+            createFlagRegionOptionCheckboxes();
             populateCountries();
             resetFlag();
             
