@@ -23,10 +23,10 @@
             <h2>Guess the Flag!</h2>
             <img id="flag" class="m-4" src="" />
             <br/>
-            <input type="text" list="countriesData" id="countries" name="countries">
-            <datalist id="countriesData"></datalist>
+            <input type="text" list="countriesData" id="countries" name="countries" autocomplete="off"/>
+            <datalist id="countriesData">
             <!-- These are set in `countries.js` using populateOptions(); -->
-            </input>
+            </datalist>
             <br/>
             <button id="submit">Guess!</button>
             <br/>
