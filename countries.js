@@ -363,6 +363,15 @@ function getRandomFlag() {
     return document.userFlags[Math.floor(Math.random() * document.userFlags.length)];
 }
 
+var input = document.getElementById("countries");
+
+input.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      submitGuess();
+    }
+  });
+
 function submitGuess() {
     /* Gets the user's guess in the selection and compares it to the 
        chosen random flag. */
