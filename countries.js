@@ -393,4 +393,7 @@ function resetFlag() {
     /* Resets the flag and restarts the round. */
     window.flagData = getRandomFlag();
     $("#flag").attr("src", `assets/images/${window.flagData['abbr']}.svg`);
+
+    var selectionBox = document.getElementById("countries");
+    selectionBox.value = "";
 }
