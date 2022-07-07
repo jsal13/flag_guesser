@@ -16,13 +16,73 @@ ul li {
     padding: 0;
 }
 
-img#flag {
-    width: 500px;
-    height: 300px;
+#guess-caption {
+    font-size: 0.75rem;
 }
 
-button#submit {
+/* CSS GRID */
+.grid-item {
+    justify-self: center;
+    align-self: center;
+}
+.grid-item-title {
+    grid-area: title;
+}
+.grid-item-flag {
+    grid-area: flag;
+}
+.grid-item-score {
+    grid-area: score;
+}
+
+/* Guess Grid to get Caption text. */
+.grid-item-guess {
+    grid-area: guess;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 60px 10px 80px;
+}
+.grid-item-guess-box {
+  grid-column: 1;
+  grid-row: 1;
+}
+.grid-item-guess-caption {
+  grid-column: 1;
+  grid-row: 2;
+}
+.grid-item-guess-button{
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.grid-item-return-screen {
+    grid-area: returnScreen;
+}
+
+.container {
+    display: grid;
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: #33383d;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 400px auto;
+    grid-template-areas: 
+        "title title"
+        "flag score"
+        "guess returnScreen";
+}
+
+img#flag {
+    width: 500px;
+}
+
+button#submit, button#return-to-start-modal {
     font-size: 2rem;
+    border-radius: 1rem;
+}
+button#return-to-start-modal {
+    font-size: 1rem;
     border-radius: 1rem;
 }
 
