@@ -86,7 +86,6 @@
     ></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="countries.js"></script>
-    <script src="utils.js"></script>
 
     <script>
       // Init
@@ -96,8 +95,9 @@
         createFlagRegionOptionCheckboxes();
         populateOptions();
         resetFlag();
+        $("#region-dialog").hide();
 
-        // DIALOG ON PAGE OPEN.
+        // TRIGGER MODAL ON DOCUMENT OPEN.
         // $("#region-dialog").dialog({
         //   modal: true,
         //   buttons: {
