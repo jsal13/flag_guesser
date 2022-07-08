@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flag Guess</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Bootstrap core CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -60,8 +67,12 @@
         </div>
 
         <div class="grid-item grid-item-score">
-          <h3 id="score-correct">Correct: 0</h3>
-          <h3 id="score-wrong">Current Streak: 0</h3>
+          <table id="score-table">
+            <tr>
+              <td>Streak</td>
+              <td id="score-streak">0</td>
+            </tr>
+          </table>
         </div>
 
         <div class="grid-item grid-item-return-screen">

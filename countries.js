@@ -369,14 +369,13 @@ function submitGuess() {
 
     let selectedCountryName = document.getElementById('countries').value;
 
-    var scoreCorrect = document.getElementById("score-correct");
-    var scoreWrong = document.getElementById("score-wrong");
+    var scoreStreak = document.getElementById("score-streak");
     if (window.flagData['name'].toLowerCase() == selectedCountryName.toLowerCase()) {
         alert(`Yep! It was ${window.flagData['name']}.`);
-        scoreCorrect.textContent = (parseInt(scoreCorrect.textContent) + 1).toString();
+        scoreStreak.textContent = (parseInt(scoreStreak.textContent) + 1).toString();
     } else {
         alert(`Nope! It was ${window.flagData['name']}.`)
-        scoreWrong.textContent = (parseInt(scoreWrong.textContent) + 1).toString()
+        scoreStreak.textContent = "0"
     }
 }
 

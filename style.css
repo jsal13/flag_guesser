@@ -1,3 +1,12 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px!important;
+}
+
+h2 {
+    font-size: 2.325rem!important;
+}
+
 p {
     color: white;
 }
@@ -84,8 +93,8 @@ fieldset > div > label {
         "title"
         "flag"
         "guess"
-        "returnScreen"
         "score"
+        "returnScreen"
 }
 
 img#flag {
@@ -106,4 +115,12 @@ button#region-dialog-btn {
     font-size: 1.5rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
+}
+
+#score-table {
+    font-size: 2rem;
+}
+
+#score-streak {
+    padding-left: 1.75rem;
 }
