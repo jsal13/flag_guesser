@@ -13,7 +13,13 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.min.css"
+      integrity="sha512-t/yl85emxwarY4DzF8RUddWA+01SUMtURTPNve/zvFnzmor8mM2TMu2tWff/SdeXOEyrmenasu2R2/UEeDE+pw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link href="style.css" rel="stylesheet" />
   </head>
 
@@ -59,26 +65,26 @@
         </div>
 
         <div class="grid-item grid-item-return-screen">
-          <fieldset id="regionFS">
-            <legend>Pick your Regions:</legend>
-          </fieldset>
-          <button id="return-to-start-modal">Return to Region Selection</button>
+          <button id="region-dialog-btn">Return to Region Selection</button>
+          <div id="region-dialog" title="Region Select">
+            <fieldset id="regionFS">
+              <legend>Pick your Regions:</legend>
+            </fieldset>
+          </div>
         </div>
       </div>
     </main>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="countries.js"></script>
 
     <script>
@@ -89,6 +95,18 @@
         createFlagRegionOptionCheckboxes();
         populateOptions();
         resetFlag();
+        $("#region-dialog").hide();
+
+        $("#region-dialog-btn").click(function () {
+          $("#region-dialog").dialog({
+            modal: true,
+            buttons: {
+              Ok: function () {
+                $(this).dialog("close");
+              },
+            },
+          });
+        });
 
         $("#submit").click(function () {
           submitGuess();

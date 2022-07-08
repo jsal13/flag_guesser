@@ -16,6 +16,10 @@ ul li {
     padding: 0;
 }
 
+fieldset > div > label {
+    padding-left: 0.4rem;
+}
+
 #guess-caption {
     font-size: 0.75rem;
 }
@@ -46,6 +50,8 @@ ul li {
   grid-column: 1;
   grid-row: 1;
 }
+/* END Guess Grid */ 
+
 .grid-item-guess-caption {
   grid-column: 1;
   grid-row: 2;
@@ -71,17 +77,26 @@ ul li {
         "title title"
         "flag score"
         "guess returnScreen";
+
+    /* grid-template-columns: 1fr;
+    grid-template-rows: auto 600px auto auto auto;
+    grid-template-areas: 
+        "title"
+        "flag"
+        "guess"
+        "returnScreen"
+        "score" */
 }
 
 img#flag {
-    width: 500px;
+    width: 600px;
 }
 
-button#submit, button#return-to-start-modal {
+button#submit {
     font-size: 2rem;
     border-radius: 1rem;
 }
-button#return-to-start-modal {
+button#region-dialog-btn {
     font-size: 1rem;
     border-radius: 1rem;
 }
