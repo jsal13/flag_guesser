@@ -97,6 +97,15 @@
         resetFlag();
         $("#region-dialog").hide();
 
+        var input = document.getElementById("countries");
+        input.addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            submitGuess();
+            refreshCountriesAndFlags();
+            resetFlag();
+          }
+        });
+
         // TRIGGER MODAL ON DOCUMENT OPEN.
         // $("#region-dialog").dialog({
         //   modal: true,

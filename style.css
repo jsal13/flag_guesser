@@ -71,25 +71,26 @@ fieldset > div > label {
     border-radius: 2rem;
     background-color: #33383d;
 
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 400px auto;
     grid-template-areas: 
         "title title"
         "flag score"
-        "guess returnScreen";
+        "guess returnScreen"; */
 
-    /* grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 600px auto auto auto;
     grid-template-areas: 
         "title"
         "flag"
         "guess"
         "returnScreen"
-        "score" */
+        "score"
 }
 
 img#flag {
-    width: 600px;
+    width: 800px;
+    max-height: 500px;
 }
 
 button#submit {
