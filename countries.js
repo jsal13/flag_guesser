@@ -387,3 +387,18 @@ function resetFlag() {
     var selectionBox = document.getElementById("countries");
     selectionBox.value = "";
 }
+
+function invalidValue() {
+    /*gray out 'Guess' if val doesn't exist*/
+    var value = document.getElementById("countries").value;
+
+    if ((!countries.some(countries => countries.name.toLowerCase() === value.toLowerCase()))) {
+        document.getElementById("submit").disabled = true;
+        return false;
+    }
+    else {
+        document.getElementById("submit").disabled = false;
+        return true;
+
+    }
+}
