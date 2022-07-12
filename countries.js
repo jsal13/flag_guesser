@@ -379,6 +379,11 @@ function submitGuess() {
     }
 }
 
+function enableSubmit(val) {
+    /* Enables submit button if val is true.*/
+    document.getElementById("submit").disabled = !val;
+}
+
 function resetFlag() {
     /* Resets the flag and restarts the round. */
     window.flagData = getRandomFlag();
@@ -393,12 +398,11 @@ function invalidValue() {
     var value = document.getElementById("countries").value;
 
     if ((!countries.some(countries => countries.name.toLowerCase() === value.toLowerCase()))) {
-        document.getElementById("submit").disabled = true;
+        enableSubmit(false);
         return false;
     }
     else {
-        document.getElementById("submit").disabled = false;
+        enableSubmit(true);
         return true;
-
     }
 }

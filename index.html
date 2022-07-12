@@ -107,19 +107,20 @@
         createFlagRegionOptionCheckboxes();
         populateOptions();
         resetFlag();
+        enableSubmit(false);
         $("#region-dialog").hide();
 
         var input = document.getElementById("countries");
+
         input.addEventListener("keypress", function (event) {
           if (event.key === "Enter") {
-            
-            if (invalidValue(true)) {
-                  submitGuess();
-                  refreshCountriesAndFlags();
-                  resetFlag();
-              }
+            if (invalidValue()) {
+              submitGuess();
+              refreshCountriesAndFlags();
+              resetFlag();
+            }
             /*if val doesn't exist, disabled enter*/
-              event.preventDefault();
+            event.preventDefault();
           }
         });
 
@@ -148,6 +149,7 @@
           submitGuess();
           refreshCountriesAndFlags();
           resetFlag();
+          enableSubmit(false);
         });
       });
     </script>
