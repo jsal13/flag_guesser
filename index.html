@@ -49,6 +49,7 @@
               id="countries"
               name="countries"
               autocomplete="off"
+              oninput="invalidValue()"
             />
             <datalist id="countriesData">
               <!-- These are set in `countries.js` using populateOptions(); -->
@@ -111,9 +112,14 @@
         var input = document.getElementById("countries");
         input.addEventListener("keypress", function (event) {
           if (event.key === "Enter") {
-            submitGuess();
-            refreshCountriesAndFlags();
-            resetFlag();
+            
+            if (invalidValue(true)) {
+                  submitGuess();
+                  refreshCountriesAndFlags();
+                  resetFlag();
+              }
+            /*if val doesn't exist, disabled enter*/
+              event.preventDefault();
           }
         });
 
