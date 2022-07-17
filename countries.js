@@ -253,7 +253,7 @@ const countries = [
     {'abbr': 'vn', 'name': "Vietnam", 'region': 'Asia'},
     {'abbr': 'vg', 'name': "British Virgin Islands", 'region': 'Americas'},
     {'abbr': 'vi', 'name': "U.S. Virgin Islands", 'region': 'Americas'},
-    {'abbr': 'wf', 'name': "Wallis and Futuna", 'region': 'Oceania'},
+    {'abbr': 'wf', 'name': "Wallis and Futuna", 'region': 'Territories and Minor Islands'},
     {'abbr': 'eh', 'name': "Western Sahara", 'region': 'Africa'},
     {'abbr': 'ye', 'name': "Yemen", 'region': 'Middle East'},
     {'abbr': 'zm', 'name': "Zambia", 'region': 'Africa'},
