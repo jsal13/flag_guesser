@@ -346,7 +346,7 @@ function createUserRegions() {
     /* Creates a set for user's regions. */
     document.userRegions = new Set();
     countries.forEach(e => {
-        document.userRegions.add(e.region);
+        if (e.region !== "Territories and Minor Islands") document.userRegions.add(e.region);
     });
 }
 
