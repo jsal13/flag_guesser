@@ -16,7 +16,7 @@ const countries = [
     {'abbr': 'as', 'name': "American Samoa", 'region': 'Oceania'},
     {'abbr': 'ad', 'name': "Andorra", 'region': 'Europe'},
     {'abbr': 'ao', 'name': "Angola", 'region': 'Africa'},
-    {'abbr': 'ai', 'name': "Anguilla", 'region': 'Americas'},
+    {'abbr': 'ai', 'name': "Anguilla", 'region': 'Territories and Minor Islands'},
     {'abbr': 'aq', 'name': "Antarctica", 'region': 'Territories and Minor Islands'},
     {'abbr': 'ag', 'name': "Antigua and Barbuda", 'region': 'Americas'},
     {'abbr': 'ar', 'name': "Argentina", 'region': 'Americas'},
